@@ -1,0 +1,29 @@
+{
+  "name": "news-blog-combination",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "cheerio": "^1.0.0-rc.10",
+    "chromedriver": "^96.0.0",
+    "clipboardy": "^2.3.0",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.0",
+    "express": "^4.17.1",
+    "file-clippy": "^1.0.1",
+    "fileboard": "^1.0.0",
+    "jade": "~1.11.0",
+    "morgan": "^1.10.0",
+    "node-base64-image": "^2.0.3",
+    "node-cron": "^3.0.0",
+    "puppeteer": "^10.1.0",
+    "request": "^2.88.2",
+    "selenium-webdriver": "^4.0.0-beta.4",
+    "serve-favicon": "^2.5.0",
+    "utf8": "^3.0.0"
+  }
+}
