@@ -28,24 +28,15 @@ router.get('/2', async function (req, res, next) {
 	}
 
 	for (var i = 0; i < postList.length; i++) {
-		console.log("[제목]" + decodeURIComponent(postList[i].title));
-		fs.appendFileSync('test1.txt', "\n\n[제목]" + decodeURIComponent(postList[i].title) + "\n");
 		var res2 = await getBody('https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query=' + postList[i].title + '&tqi=hkbAdsprvh8ss4Gsck0ssssstdR-362053');
-		while (res2 !== '') {
-			var bloggerIdIndex = res2.indexOf("blog.naver.com/");
-			if (bloggerIdIndex === -1) {
-				break;
-			}
-			var temp = res2.substring(bloggerIdIndex);
-			var end = temp.indexOf('"');
 
-			var blogId = temp.substring(0, end);
-			res2 = res2.substring(0, end);
-			if (blogId.indexOf(id) > -1) {
-				await fs.appendFileSync('test1.txt', ' '+blogId + '\n');
-			} else {
-				await fs.appendFileSync('test1.txt', ' (펌?!) '+blogId + '\n');
-			}
+		var bloggerIdIndex = res2.indexOf("blog.naver.com/" + id);
+		if (bloggerIdIndex === -1) {
+			console.log("[상위노출맞나?]" + decodeURIComponent(postList[i].title));
+			await fs.appendFileSync('test1.txt', '\t[상위노출맞나?] '+decodeURIComponent(postList[i].title) + '\n');
+		} else {
+			console.log("[제목]" + decodeURIComponent(postList[i].title));
+			await fs.appendFileSync('test1.txt', ''+decodeURIComponent(postList[i].title) + '\n');
 		}
 	}
 	// postList = postList.filter(function (a, b) {
